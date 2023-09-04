@@ -1,4 +1,3 @@
-/** @type {import('webpack').Configuration} */
 const path = require('path');
 
 module.exports = {
@@ -9,5 +8,16 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js', '.ts'],
+    },
+    module: {
+        rules: [
+            {
+                test: /\.ts$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                },
+            },
+        ],
     },
 };

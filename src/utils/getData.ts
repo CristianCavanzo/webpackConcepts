@@ -1,6 +1,6 @@
 const API = 'https://randomuser.me/api/';
 
-const getData = async (id) => {
+const getData = async (id?: string) => {
     const apiURl = id ? `${API}${id}` : API;
     try {
         const response = await fetch(apiURl);
