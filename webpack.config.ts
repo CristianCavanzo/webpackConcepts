@@ -5,7 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const CSSMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-
+const Dotenv = require('dotenv-webpack');
 module.exports = {
     entry: './src/index.ts',
     output: {
@@ -58,6 +58,7 @@ module.exports = {
         new MiniCSSExtract({
             filename: 'assets/[name].[contenthash].css',
         }),
+        new Dotenv(),
     ],
     optimization: {
         minimize: true,
