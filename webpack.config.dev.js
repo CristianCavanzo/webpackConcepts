@@ -3,7 +3,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCSSExtract = require('mini-css-extract-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
-
+const BundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 module.exports = {
     entry: './src/index.ts',
     mode: 'development',
@@ -56,5 +56,13 @@ module.exports = {
             filename: 'assets/[name].[contenthash].css',
         }),
         new Dotenv(),
+        new BundleAnalyzer(),
     ],
+    devServer: {
+        static: path.join(__dirname, 'dist'),
+        compress: true,
+        historyApiFallback: true,
+        port: 3000,
+        open: true,
+    },
 };
